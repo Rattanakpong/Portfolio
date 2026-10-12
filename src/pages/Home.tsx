@@ -3,6 +3,7 @@ import { motion, Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { PageRoute } from '../types';
 import { ArrowRight, Satellite, Rocket, Telescope, Hexagon } from 'lucide-react';
+import { ClickableAvatar } from '../components/ClickableAvatar';
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -39,13 +40,7 @@ export const Home: React.FC = () => {
         {/* Profile Picture */}
         <motion.div variants={itemVariants} className="md:order-2 flex-shrink-0">
           <div className="relative w-48 h-48 md:w-64 md:h-64 rounded-full border border-white/10 p-2 bg-black/20 backdrop-blur-sm">
-            <div className="w-full h-full rounded-full overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
-              <img 
-                src="/images/profile/headshot.jpg"
-                alt="Profile" 
-                className="w-full h-full object-cover object-top"
-              />
-            </div>
+            <ClickableAvatar src="/images/profile/headshot.jpg" alt="Rattanakpong Pha" transitionDuration="duration-700" />
             {/* Decorative ring */}
             <div className="absolute inset-0 rounded-full border border-white/5 animate-pulse-slow"></div>
           </div>
