@@ -1,8 +1,16 @@
-# Rattanakpong Portfolio
+# Rattanakpong Pha — Portfolio
 
-A personal portfolio site showcasing web development projects and graphic design work, built with React, TypeScript, and Tailwind CSS.
+Computer Science · Software Developer & Designer · Phnom Penh, Cambodia
 
-**Live site:** _add your deployed URL here_
+**Live site:** [rattanakpong-portfolio.vercel.app](https://rattanakpong-portfolio.vercel.app)
+
+## About
+
+Computer Science student at Paragon International University working across full-stack development and UI/UX design. Builds web platforms in React, TypeScript and Laravel, and designs visual identities with Figma and Adobe Creative Suite. Currently interning at the Ministry of Industry, Science, Technology & Innovation and serving as Local Director at JCI Phnom Penh.
+
+This repository is the source for that portfolio: a single-page React app covering Home, Work (project showcase), Resume/CV, and Contact.
+
+**Connect:** [GitHub](https://github.com/Rattanakpong) · [LinkedIn](https://www.linkedin.com/in/pha-rattanakpong/) · [Behance](https://www.behance.net/pharattanakpong06) · prattanakpong@gmail.com
 
 ## Tech Stack
 
@@ -22,7 +30,7 @@ A personal portfolio site showcasing web development projects and graphic design
 │       ├── profile/        # headshot
 │       └── projects/       # project thumbnails
 ├── src/
-│   ├── components/         # Navigation, Footer
+│   ├── components/         # Navigation, Footer, ClickableAvatar, Magnetic, TiltWrapper, CursorSpotlight
 │   ├── pages/               # Home, Work, Profile, Contact
 │   ├── App.tsx              # routes & layout shell
 │   ├── main.tsx              # React entry point
@@ -55,6 +63,6 @@ npm run preview
 
 ## Editing Content
 
-Site copy — skills, work experience, credentials, and project entries — lives in a single file: [`src/constants.ts`](src/constants.ts). Update that file to change what's displayed; no need to touch page components for routine content changes.
+Site copy — skills, education, certifications, work experience, and project entries — lives in a single file: [`src/constants.ts`](src/constants.ts), kept in sync with the latest CV. Update that file to change what's displayed; no need to touch page components for routine content changes.
 
-Project and profile images live under `public/images/`. Reference them with an absolute path (e.g. `/images/projects/my-project.png`).
+Project and profile images live under `public/images/`. Reference them with an absolute path (e.g. `/images/projects/my-project.png`). Projects without an image (e.g. ones without a public screenshot yet) can omit `imageUrl` — the Work page falls back to a placeholder treatment.
