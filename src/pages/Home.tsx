@@ -42,7 +42,7 @@ export const Home: React.FC = () => {
       className="min-h-screen pt-32 pb-12 px-6 max-w-7xl mx-auto"
     >
       {/* Hero Section */}
-      <section className="mb-48 relative z-10">
+      <section className="mb-28 relative z-10">
         <CursorSpotlight className="flex flex-col md:flex-row items-center md:items-start gap-12">
 
           {/* Profile Picture */}
@@ -92,7 +92,7 @@ export const Home: React.FC = () => {
       </section>
 
       {/* Core Systems Section */}
-      <section className="grid md:grid-cols-2 gap-24 mb-40 border-t border-white/10 pt-20 relative">
+      <section className="grid md:grid-cols-2 gap-16 mb-24 border-t border-white/10 pt-16 relative">
         <motion.div variants={itemVariants}>
           <h3 className="font-mono text-neutral-600 text-[10px] mb-8 uppercase tracking-[0.3em] flex items-center gap-3">
             <span className="w-1 h-1 bg-white rounded-full"></span>
