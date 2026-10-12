@@ -32,8 +32,8 @@ export const CursorSpotlight: React.FC<CursorSpotlightProps> = ({
 
   return (
     <div onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} className={`relative ${className}`}>
-      <motion.div className="pointer-events-none absolute inset-0 z-0" style={{ background }} />
-      <div className="relative z-10">{children}</div>
+      <motion.div className="pointer-events-none absolute inset-0 -z-10" style={{ background }} />
+      {children}
     </div>
   );
 };
