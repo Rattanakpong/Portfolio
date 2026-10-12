@@ -1,9 +1,12 @@
 import React from 'react';
-import { motion, Variants } from 'framer-motion';
+import { motion, useScroll, useTransform, Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { PageRoute } from '../types';
 import { ArrowRight, Satellite, Rocket, Telescope, Hexagon } from 'lucide-react';
 import { ClickableAvatar } from '../components/ClickableAvatar';
+import { Magnetic } from '../components/Magnetic';
+import { TiltWrapper } from '../components/TiltWrapper';
+import { CursorSpotlight } from '../components/CursorSpotlight';
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -27,6 +30,10 @@ const itemVariants: Variants = {
 };
 
 export const Home: React.FC = () => {
+  const { scrollY } = useScroll();
+  const avatarParallaxY = useTransform(scrollY, [0, 500], [0, 60]);
+  const headlineParallaxY = useTransform(scrollY, [0, 500], [0, -30]);
+
   return (
     <motion.div
       initial="hidden"
@@ -35,45 +42,53 @@ export const Home: React.FC = () => {
       className="min-h-screen pt-32 pb-12 px-6 max-w-7xl mx-auto"
     >
       {/* Hero Section */}
-      <section className="mb-48 relative z-10 flex flex-col md:flex-row items-center md:items-start gap-12">
-        
-        {/* Profile Picture */}
-        <motion.div variants={itemVariants} className="md:order-2 flex-shrink-0">
-          <div className="relative w-48 h-48 md:w-64 md:h-64 rounded-full border border-white/10 p-2 bg-black/20 backdrop-blur-sm">
-            <ClickableAvatar src="/images/profile/headshot.jpg" alt="Rattanakpong Pha" transitionDuration="duration-700" />
-            {/* Decorative ring */}
-            <div className="absolute inset-0 rounded-full border border-white/5 animate-pulse-slow"></div>
-          </div>
-        </motion.div>
+      <section className="mb-48 relative z-10">
+        <CursorSpotlight className="flex flex-col md:flex-row items-center md:items-start gap-12">
 
-        <div className="md:order-1 flex-1">
-          <motion.div variants={itemVariants} className="mb-8">
-            <span className="font-mono text-neutral-500 text-[10px] tracking-[0.4em] uppercase border-l border-neutral-700 pl-3">
-              Available for Hire
-            </span>
+          {/* Profile Picture */}
+          <motion.div style={{ y: avatarParallaxY }} className="md:order-2 flex-shrink-0">
+            <motion.div variants={itemVariants}>
+              <TiltWrapper className="w-48 h-48 md:w-64 md:h-64">
+                <div className="relative w-full h-full rounded-full border border-white/10 p-2 bg-black/20 backdrop-blur-sm">
+                  <ClickableAvatar src="/images/profile/headshot.jpg" alt="Rattanakpong Pha" transitionDuration="duration-700" />
+                  {/* Decorative ring */}
+                  <div className="absolute inset-0 rounded-full border border-white/5 animate-pulse-slow"></div>
+                </div>
+              </TiltWrapper>
+            </motion.div>
           </motion.div>
-          
-          <motion.h1 variants={itemVariants} className="text-6xl md:text-8xl font-bold tracking-tighter text-white mb-8 leading-[0.9] mix-blend-difference">
-            DESIGN,<br />
-            <span className="text-neutral-600">DEVELOPER.</span>
-          </motion.h1>
 
-          <motion.h2 variants={itemVariants} className="text-lg md:text-xl font-mono text-neutral-500 mb-12 max-w-2xl pl-1">
-            FULL STACK DEVELOPER & GRAPHIC DESIGN.
-            <br/>
-            <span className="text-neutral-700 text-sm mt-2 block tracking-widest">BUILDING SCALABLE DIGITAL SOLUTIONS</span>
-          </motion.h2>
+          <motion.div style={{ y: headlineParallaxY }} className="md:order-1 flex-1">
+            <motion.div variants={itemVariants} className="mb-8">
+              <span className="font-mono text-neutral-500 text-[10px] tracking-[0.4em] uppercase border-l border-neutral-700 pl-3">
+                Available for Hire
+              </span>
+            </motion.div>
 
-          <motion.div variants={itemVariants}>
-            <Link 
-              to={PageRoute.WORK} 
-              className="group inline-flex items-center gap-6 text-white font-mono font-bold text-sm uppercase tracking-[0.2em] transition-all hover:text-neutral-400"
-            >
-              <span className="border-b border-white pb-1 group-hover:border-neutral-400 transition-colors">View Projects</span>
-              <ArrowRight className="group-hover:translate-x-2 transition-transform duration-500" strokeWidth={1} />
-            </Link>
+            <motion.h1 variants={itemVariants} className="text-6xl md:text-8xl font-bold tracking-tighter text-white mb-8 leading-[0.9] mix-blend-difference">
+              DESIGN,<br />
+              <span className="text-neutral-600">DEVELOPER.</span>
+            </motion.h1>
+
+            <motion.h2 variants={itemVariants} className="text-lg md:text-xl font-mono text-neutral-500 mb-12 max-w-2xl pl-1">
+              FULL STACK DEVELOPER & GRAPHIC DESIGN.
+              <br/>
+              <span className="text-neutral-700 text-sm mt-2 block tracking-widest">BUILDING SCALABLE DIGITAL SOLUTIONS</span>
+            </motion.h2>
+
+            <motion.div variants={itemVariants}>
+              <Magnetic className="inline-block" strength={0.4}>
+                <Link
+                  to={PageRoute.WORK}
+                  className="group inline-flex items-center gap-6 text-white font-mono font-bold text-sm uppercase tracking-[0.2em] transition-all hover:text-neutral-400"
+                >
+                  <span className="border-b border-white pb-1 group-hover:border-neutral-400 transition-colors">View Projects</span>
+                  <ArrowRight className="group-hover:translate-x-2 transition-transform duration-500" strokeWidth={1} />
+                </Link>
+              </Magnetic>
+            </motion.div>
           </motion.div>
-        </div>
+        </CursorSpotlight>
       </section>
 
       {/* Core Systems Section */}
@@ -129,9 +144,11 @@ export const Home: React.FC = () => {
             { Icon: Satellite, title: "LEAD", desc: "Support & Advisor  on Projects" }
           ].map((item, i) => (
             <motion.div key={i} variants={itemVariants} className="bg-transparent p-8 hover:bg-white/[0.03] transition-colors duration-500 group">
-              <item.Icon className="mb-8 text-neutral-700 group-hover:text-white transition-colors duration-500" size={24} strokeWidth={1} />
-              <h4 className="font-bold mb-4 text-white tracking-widest text-sm">{item.title}</h4>
-              <p className="text-neutral-500 text-xs font-mono leading-relaxed">{item.desc}</p>
+              <Magnetic strength={0.15} className="block">
+                <item.Icon className="mb-8 text-neutral-700 group-hover:text-white transition-colors duration-500" size={24} strokeWidth={1} />
+                <h4 className="font-bold mb-4 text-white tracking-widest text-sm">{item.title}</h4>
+                <p className="text-neutral-500 text-xs font-mono leading-relaxed">{item.desc}</p>
+              </Magnetic>
             </motion.div>
           ))}
         </div>
