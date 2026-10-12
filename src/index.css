@@ -20,6 +20,8 @@ body {
   overflow-x: hidden;
   margin: 0;
   padding: 0;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 ::-webkit-scrollbar {

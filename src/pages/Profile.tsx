@@ -7,7 +7,7 @@ import { ClickableAvatar } from '../components/ClickableAvatar';
 export const Profile: React.FC = () => {
   return (
     <div className="min-h-screen pt-32 pb-12 px-6 max-w-7xl mx-auto">
-      <div className="mb-20 border-b border-white/10 pb-12 flex flex-col md:flex-row md:items-center justify-between gap-8">
+      <div className="mb-12 md:mb-20 border-b border-white/10 pb-8 md:pb-12 flex flex-col md:flex-row md:items-center justify-between gap-8">
         <div>
           <h1 className="text-5xl md:text-7xl font-bold text-white tracking-tighter uppercase mb-4">Curriculum Vitae</h1>
           <p className="font-mono text-neutral-500 text-xs tracking-[0.3em]">CAREER HISTORY & QUALIFICATIONS</p>
@@ -19,14 +19,14 @@ export const Profile: React.FC = () => {
         </div>
       </div>
 
-      <div className="grid lg:grid-cols-12 gap-16">
-        
+      <div className="grid lg:grid-cols-12 gap-10 lg:gap-16">
+
         {/* Left Column: Skills (The Tech Stack) */}
         <div className="lg:col-span-4">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="sticky top-32"
+            className="lg:sticky lg:top-32"
           >
             <div className="flex items-center gap-3 mb-8">
                 <Cpu className="text-white" size={16} strokeWidth={1}/>
@@ -63,7 +63,7 @@ export const Profile: React.FC = () => {
                         <a href={cred.link} target="_blank" rel="noopener noreferrer" className="block">
                           <div className="text-white font-bold text-sm group-hover:text-cyan-200 transition-colors flex items-center gap-2">
                               {cred.title}
-                              <ExternalLink size={12} className="opacity-0 group-hover:opacity-100 transition-opacity text-neutral-500" />
+                              <ExternalLink size={12} className="opacity-50 md:opacity-0 md:group-hover:opacity-100 transition-opacity text-neutral-500" />
                           </div>
                           <div className="text-neutral-500 text-[10px] font-mono mt-1 uppercase group-hover:text-neutral-400 transition-colors">
                             {cred.institution} • {cred.date}
@@ -99,7 +99,7 @@ export const Profile: React.FC = () => {
             </div>
 
              <div className="relative pl-4 md:pl-0 border-l border-white/5 md:border-l-0">
-                <div className="space-y-24">
+                <div className="space-y-14 md:space-y-24">
                   {EXPERIENCE.map((job) => (
                     <div key={job.id} className="relative flex flex-col md:flex-row gap-6 md:gap-16 group">
                       

@@ -10,7 +10,7 @@ export const Contact: React.FC = () => {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
-        className="relative z-10 p-8 md:p-24 border-y border-white/10 bg-black/40 backdrop-blur-sm max-w-5xl mx-auto w-full text-center"
+        className="relative z-10 p-6 md:p-24 border-y border-white/10 bg-black/40 backdrop-blur-sm max-w-5xl mx-auto w-full text-center"
       >
         <div className="flex justify-center mb-8">
             <span className="font-mono text-white text-[10px] tracking-[0.4em] uppercase opacity-50">
@@ -27,21 +27,21 @@ export const Contact: React.FC = () => {
           Feel free to reach out.
         </p>
 
-        <a 
+        <a
           href={`mailto:${SOCIAL_LINKS.EMAIL}`}
-          className="group inline-block border border-white/20 bg-transparent text-white font-mono font-bold text-sm px-12 py-5 uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-all duration-500 mb-20"
+          className="group inline-block border border-white/20 bg-transparent text-white font-mono font-bold text-sm px-12 py-5 uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-all duration-500 mb-12 md:mb-20"
         >
           [ Send Message ]
         </a>
 
-        <div className="flex justify-center gap-12 md:gap-24">
-          <a href={SOCIAL_LINKS.GITHUB} target="_blank" rel="noopener noreferrer" className="text-neutral-600 hover:text-white transition-colors duration-500">
+        <div className="flex justify-center gap-6 md:gap-16">
+          <a href={SOCIAL_LINKS.GITHUB} target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="p-3 text-neutral-600 hover:text-white transition-colors duration-500">
             <Github size={24} strokeWidth={1} />
           </a>
-          <a href={SOCIAL_LINKS.LINKEDIN} target="_blank" rel="noopener noreferrer" className="text-neutral-600 hover:text-white transition-colors duration-500">
+          <a href={SOCIAL_LINKS.LINKEDIN} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="p-3 text-neutral-600 hover:text-white transition-colors duration-500">
             <Linkedin size={24} strokeWidth={1} />
           </a>
-          <a href={SOCIAL_LINKS.BEHANCE} target="_blank" rel="noopener noreferrer" className="text-neutral-600 hover:text-white transition-colors duration-500">
+          <a href={SOCIAL_LINKS.BEHANCE} target="_blank" rel="noopener noreferrer" aria-label="Behance" className="p-3 text-neutral-600 hover:text-white transition-colors duration-500">
             <Monitor size={24} strokeWidth={1} />
           </a>
         </div>

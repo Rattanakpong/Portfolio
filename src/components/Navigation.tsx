@@ -9,7 +9,7 @@ const NavItem: React.FC<{ to: string; label: string; onClick?: () => void }> = (
       to={to}
       onClick={onClick}
       className={({ isActive }) =>
-        `font-mono text-xs tracking-[0.2em] uppercase transition-all duration-300 py-1 px-2 relative group ${
+        `font-mono text-xs tracking-[0.2em] uppercase transition-all duration-300 py-3 px-2 md:py-1 relative group ${
           isActive
             ? 'text-white'
             : 'text-neutral-500 hover:text-white'
@@ -31,10 +31,10 @@ export const Navigation: React.FC = () => {
 
   return (
     <nav className="fixed top-0 left-0 w-full z-50 bg-black/20 backdrop-blur-md border-b border-white/5 supports-[backdrop-filter]:bg-black/10">
-      <div className="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
-        <NavLink to={PageRoute.HOME} className="text-white font-bold tracking-tighter text-xl font-mono flex items-center gap-2 group">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 h-20 md:h-24 flex items-center justify-between">
+        <NavLink to={PageRoute.HOME} className="text-white font-bold tracking-tighter text-lg md:text-xl font-mono flex items-center gap-2 group">
           <div className="w-1.5 h-1.5 rounded-full bg-white group-hover:shadow-[0_0_15px_white] transition-all duration-500"></div>
-          Rattanakpong<span className="text-neutral-700">Portfolio</span>
+          Rattanakpong<span className="hidden sm:inline text-neutral-700">Portfolio</span>
         </NavLink>
 
         {/* Desktop Nav */}
@@ -46,8 +46,9 @@ export const Navigation: React.FC = () => {
         </div>
 
         {/* Mobile Toggle */}
-        <button 
-          className="md:hidden text-neutral-500 hover:text-white transition-colors"
+        <button
+          aria-label={isOpen ? 'Close menu' : 'Open menu'}
+          className="md:hidden -mr-2 p-3 text-neutral-500 hover:text-white transition-colors"
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -56,7 +57,7 @@ export const Navigation: React.FC = () => {
 
       {/* Mobile Nav */}
       {isOpen && (
-        <div className="md:hidden absolute top-24 left-0 w-full bg-black/90 backdrop-blur-xl border-b border-white/10 p-6 flex flex-col gap-6 shadow-2xl">
+        <div className="md:hidden absolute top-20 left-0 w-full bg-black/90 backdrop-blur-xl border-b border-white/10 p-6 flex flex-col gap-2 shadow-2xl">
           <NavItem to={PageRoute.HOME} label="HOME" onClick={() => setIsOpen(false)} />
           <NavItem to={PageRoute.WORK} label="WORK" onClick={() => setIsOpen(false)} />
           <NavItem to={PageRoute.PROFILE} label="RESUME" onClick={() => setIsOpen(false)} />

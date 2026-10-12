@@ -25,12 +25,12 @@ export const Work: React.FC = () => {
       </div>
 
       {/* Filters */}
-      <div className="flex flex-wrap gap-2 mb-20 border-b border-white/10 pb-6">
+      <div className="flex flex-wrap gap-2 mb-12 md:mb-20 border-b border-white/10 pb-6">
         {categories.map(category => (
           <button
             key={category}
             onClick={() => setFilter(category)}
-            className={`font-mono text-[10px] tracking-[0.1em] uppercase transition-all duration-300 py-2 px-4 border ${
+            className={`font-mono text-[10px] tracking-[0.1em] uppercase transition-all duration-300 py-2.5 px-4 border ${
               filter === category 
                 ? 'border-white bg-white text-black' 
                 : 'border-transparent text-neutral-500 hover:text-white hover:bg-white/5'
@@ -41,7 +41,7 @@ export const Work: React.FC = () => {
         ))}
       </div>
 
-      <div className="grid grid-cols-1 gap-24">
+      <div className="grid grid-cols-1 gap-16 md:gap-24">
         <AnimatePresence mode='popLayout'>
         {filteredProjects.map((project, index) => (
           <motion.div 
@@ -56,13 +56,13 @@ export const Work: React.FC = () => {
           >
             {/* Image Container */}
             <div className="relative aspect-[16/9] overflow-hidden bg-neutral-900/20 border border-white/5 transition-all duration-500 group-hover:border-white/20">
-              <div className="absolute inset-0 z-10 bg-black/20 group-hover:bg-transparent transition-colors duration-700" />
+              <div className="absolute inset-0 z-10 md:bg-black/20 md:group-hover:bg-transparent transition-colors duration-700" />
 
               {project.imageUrl ? (
                 <img
                   src={project.imageUrl}
                   alt={project.title}
-                  className="w-full h-full object-cover grayscale opacity-60 transition-all duration-1000 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105"
+                  className="w-full h-full object-cover md:grayscale md:opacity-60 transition-all duration-1000 md:group-hover:grayscale-0 md:group-hover:opacity-100 md:group-hover:scale-105"
                 />
               ) : (
                 <div className="w-full h-full flex items-center justify-center bg-neutral-900/40">
@@ -140,10 +140,11 @@ export const Work: React.FC = () => {
               </div>
 
               {/* Right/Bottom: Content */}
-              <div className="w-full md:w-1/2 p-8 md:p-12 relative flex flex-col">
-                 <button 
+              <div className="w-full md:w-1/2 p-6 md:p-12 relative flex flex-col">
+                 <button
                   onClick={() => setSelectedProject(null)}
-                  className="absolute top-6 right-6 text-neutral-500 hover:text-white transition-colors"
+                  aria-label="Close"
+                  className="absolute top-4 right-4 p-2 text-neutral-500 hover:text-white transition-colors"
                  >
                    <X size={24} />
                  </button>
