@@ -89,7 +89,7 @@ export const Home: React.FC = () => {
             About Me
           </h3>
           <p className="text-2xl md:text-3xl leading-normal text-neutral-300 font-light mix-blend-plus-lighter">
-            I am a FULL STACK DEVELOPER specialized in building web applications. I combine technical expertise in React and TypeScript with a strong eye for UI/UX design.
+            Computer Science student at Paragon International University working across full-stack development and UI/UX design. I build web platforms in React, TypeScript and Laravel, and design visual identities with Figma and Adobe Creative Suite.
           </p>
         </motion.div>
         

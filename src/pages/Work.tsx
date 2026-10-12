@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PROJECTS } from '../constants';
-import { ExternalLink, X, ArrowRight } from 'lucide-react';
+import { ExternalLink, X, ArrowRight, Layers } from 'lucide-react';
 import { Project } from '../types';
 
 export const Work: React.FC = () => {
@@ -57,13 +57,19 @@ export const Work: React.FC = () => {
             {/* Image Container */}
             <div className="relative aspect-[16/9] overflow-hidden bg-neutral-900/20 border border-white/5 transition-all duration-500 group-hover:border-white/20">
               <div className="absolute inset-0 z-10 bg-black/20 group-hover:bg-transparent transition-colors duration-700" />
-              
-              <img 
-                src={project.imageUrl} 
-                alt={project.title}
-                className="w-full h-full object-cover grayscale opacity-60 transition-all duration-1000 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105"
-              />
-              
+
+              {project.imageUrl ? (
+                <img
+                  src={project.imageUrl}
+                  alt={project.title}
+                  className="w-full h-full object-cover grayscale opacity-60 transition-all duration-1000 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105"
+                />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center bg-neutral-900/40">
+                  <Layers className="text-neutral-700 group-hover:text-neutral-500 transition-colors duration-500" size={40} strokeWidth={1} />
+                </div>
+              )}
+
               {/* Overlay Content */}
               <div className="absolute top-4 left-4 z-20">
                  <span className="font-mono text-[10px] bg-black border border-white/20 text-white px-2 py-1 uppercase tracking-widest">
@@ -120,11 +126,17 @@ export const Work: React.FC = () => {
             >
               {/* Left/Top: Image */}
               <div className="w-full md:w-1/2 aspect-video md:aspect-auto relative bg-neutral-900 border-b md:border-b-0 md:border-r border-white/10 group">
-                 <img 
-                  src={selectedProject.imageUrl} 
-                  alt={selectedProject.title}
-                  className="w-full h-full object-cover"
-                />
+                 {selectedProject.imageUrl ? (
+                   <img
+                    src={selectedProject.imageUrl}
+                    alt={selectedProject.title}
+                    className="w-full h-full object-cover"
+                  />
+                 ) : (
+                   <div className="w-full h-full flex items-center justify-center">
+                     <Layers className="text-neutral-700" size={56} strokeWidth={1} />
+                   </div>
+                 )}
               </div>
 
               {/* Right/Bottom: Content */}
@@ -161,17 +173,19 @@ export const Work: React.FC = () => {
                    </div>
                  </div>
 
-                 <div className="mt-auto pt-8 border-t border-white/10">
-                    <a 
-                      href={selectedProject.link}
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-3 bg-white text-black font-mono font-bold text-sm px-8 py-4 uppercase tracking-widest hover:bg-neutral-200 transition-colors w-full justify-center md:w-auto"
-                    >
-                      <span>Visit Live Site</span>
-                      <ExternalLink size={16} />
-                    </a>
-                 </div>
+                 {selectedProject.link && (
+                   <div className="mt-auto pt-8 border-t border-white/10">
+                      <a
+                        href={selectedProject.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-3 bg-white text-black font-mono font-bold text-sm px-8 py-4 uppercase tracking-widest hover:bg-neutral-200 transition-colors w-full justify-center md:w-auto"
+                      >
+                        <span>Visit Live Site</span>
+                        <ExternalLink size={16} />
+                      </a>
+                   </div>
+                 )}
               </div>
             </motion.div>
           </motion.div>

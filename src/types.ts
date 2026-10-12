@@ -4,8 +4,8 @@ export interface Project {
   type: string;
   description: string;
   tags: string[];
-  imageUrl: string;
-  link: string;
+  imageUrl?: string;
+  link?: string;
 }
 
 export interface Experience {
