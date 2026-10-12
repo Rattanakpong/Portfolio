@@ -48,7 +48,7 @@ export const Home: React.FC = () => {
           {/* Profile Picture */}
           <motion.div style={{ y: avatarParallaxY }} className="md:order-2 flex-shrink-0">
             <motion.div variants={itemVariants}>
-              <TiltWrapper className="w-48 h-48 md:w-64 md:h-64">
+              <TiltWrapper className="w-56 h-56 md:w-80 md:h-80 lg:w-96 lg:h-96">
                 <div className="relative w-full h-full rounded-full border border-white/10 p-2 bg-black/20 backdrop-blur-sm">
                   <ClickableAvatar src="/images/profile/headshot.jpg" alt="Rattanakpong Pha" transitionDuration="duration-700" />
                   {/* Decorative ring */}

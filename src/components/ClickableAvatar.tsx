@@ -18,11 +18,11 @@ export const ClickableAvatar: React.FC<ClickableAvatarProps> = ({ src, alt, tran
         type="button"
         onClick={() => setIsOpen(true)}
         aria-label={`View larger ${alt}`}
-        className={`group/avatar block relative w-full h-full rounded-full overflow-hidden grayscale hover:grayscale-0 transition-all ${transitionDuration} cursor-zoom-in`}
+        className={`group/avatar block relative w-full h-full rounded-full overflow-hidden grayscale hover:grayscale-0 hover:scale-[1.04] transition-all ${transitionDuration} cursor-zoom-in hover:shadow-[0_0_60px_-8px_rgba(255,255,255,0.35)]`}
       >
         <img src={src} alt={alt} className="w-full h-full object-cover object-top" />
-        <div className="absolute inset-0 flex items-center justify-center bg-black/0 group-hover/avatar:bg-black/40 transition-colors duration-300">
-          <Maximize2 className="text-white opacity-0 group-hover/avatar:opacity-100 transition-opacity duration-300" size={20} strokeWidth={1.5} />
+        <div className="absolute inset-0 flex items-center justify-center bg-black/0 group-hover/avatar:bg-black/30 transition-colors duration-300">
+          <Maximize2 className="text-white opacity-0 group-hover/avatar:opacity-100 scale-75 group-hover/avatar:scale-100 transition-all duration-300" size={24} strokeWidth={1.5} />
         </div>
       </button>
 
